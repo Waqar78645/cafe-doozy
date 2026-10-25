@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#173c2b">
 <title>Café Doozy — Bahawalnagar | Sip'n Serenity · Order Online</title>
 <link rel="icon" href="Pizzaimages/doozy-logo.jpg">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
@@ -15,7 +16,7 @@
   --cream:#fff8ec; --paper:#fffdf7; --flour:#fffaf0; --line:#e2eaf0; --muted:#5d6d64;
   --shadow:0 10px 30px rgba(23,35,29,.12); --radius:18px;
 }
-*{margin:0;padding:0;box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--paper);color:var(--forest);line-height:1.55}
 img{max-width:100%;display:block}
@@ -221,6 +222,7 @@ footer a:hover{color:var(--gold)}
 .toast{position:fixed;bottom:26px;left:50%;max-width:92vw;text-align:center;transform:translate(-50%,90px);background:var(--forest);color:#fff;font-weight:700;padding:.8rem 1.4rem;border-radius:999px;z-index:120;transition:.35s;box-shadow:var(--shadow);display:flex;gap:.5rem;align-items:center}
 .toast.show{transform:translate(-50%,0)}
 .toast i{color:var(--gold)}
+.mobile-cart-bar{display:none}
 .chat-fab{position:fixed;right:22px;bottom:22px;z-index:70;width:56px;height:56px;border-radius:50%;background:var(--green);color:#fff;font-size:1.35rem;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center}
 .chat-panel{position:fixed;right:22px;bottom:88px;z-index:70;width:min(300px,92vw);background:#fff;border-radius:18px;box-shadow:var(--shadow);border:1px solid var(--line);padding:18px;display:none}
 .chat-panel.show{display:block}
@@ -272,6 +274,14 @@ footer a:hover{color:var(--gold)}
   .mega-banner{padding:20px}
   .mega-banner .btn{margin-left:0;width:100%;justify-content:center}
   .conv-in .big{font-size:1.2rem}
+  .p-card .img-wrap{height:118px}
+  .mobile-cart-bar{display:flex;position:fixed;left:10px;right:10px;bottom:10px;z-index:65;background:var(--forest);color:#fff;border-radius:14px;padding:.65rem .8rem;align-items:center;gap:.7rem;box-shadow:0 14px 30px rgba(0,0,0,.35);transform:translateY(95px);transition:.3s}
+  .mobile-cart-bar.show{transform:translateY(0)}
+  .mobile-cart-bar span{font-weight:800;font-size:.92rem;flex:1}
+  .mobile-cart-bar button{background:var(--gold);color:var(--ink);font-weight:800;border-radius:999px;padding:.6rem 1.05rem;font-size:.9rem;border:none}
+  .chat-fab{bottom:86px;right:16px}
+  .modal-card input,.modal-card textarea,.modal-card select{font-size:16px}
+  button{touch-action:manipulation}
 }
 </style>
 </head>
@@ -450,6 +460,7 @@ footer a:hover{color:var(--gold)}
 </footer>
 
 <!-- ===== Cart drawer ===== -->
+<div class="mobile-cart-bar" id="mobileCartBar"><span id="mcbText">0 items · Rs. 0</span><button id="mcbBtn" type="button">View Cart <i class="fa-solid fa-arrow-right"></i></button></div>
 <div class="cart-overlay" id="cartOverlay"></div>
 <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
   <div class="cart-head">
@@ -506,18 +517,18 @@ let menu = [
   ["Doozy Crown Burger","Crispy juicy chicken, special Doozy sauce — hamari pehchan.","Pizzaimages/photo-crown-burger.jpg",[450],1],
   ["Zinger Burger","Crunchy fried chicken, cheese slice aur tangy sauce.","Pizzaimages/photo-zinger.jpg",[400],1],
   ["Loaded Fries","Cheese, jalapenos aur chicken chunks se fully loaded.","Pizzaimages/photo-loaded-fries.jpg",[350],1],
-  ["Doozy Cold Coffee","Thandi, creamy aur chocolatey — garmi ka best jawab.","Pizzaimages/cold-coffee.png",[250,350],1],
+  ["Doozy Cold Coffee","Thandi, creamy aur chocolatey — garmi ka best jawab.","Pizzaimages/photo-cold-coffee.jpg",[250,350],1],
   ["Pizza Fries","Fries par pizza wala full scene — sauce, cheese, toppings.","Pizzaimages/photo-pizza-fries.jpg",[480],0],
-  ["Club Sandwich","Triple layer grilled chicken, egg aur fries ke saath.","Pizzaimages/club-sandwich.png",[420],0],
+  ["Club Sandwich","Triple layer grilled chicken, egg aur fries ke saath.","Pizzaimages/photo-club-sandwich.jpg",[420],0],
   ["Crispy Broast (2 Pcs)","Golden crispy broast, garam aur fresh, chutney ke saath.","Pizzaimages/photo-broast.jpg",[550],0],
   ["Broast Bucket (4 Pcs)","Poori gathering ke liye crispy broast bucket.","Pizzaimages/photo-broast-bucket.jpg",[950],0],
-  ["Chicken Shawarma","Soft roti mein juicy chicken, garlic sauce aur salad.","Pizzaimages/shawarma.png",[250],0],
-  ["Chicken Paratha Roll","Desi ghee paratha mein masalay-daar chicken roll.","Pizzaimages/paratha-roll.png",[300],0],
+  ["Chicken Shawarma","Soft roti mein juicy chicken, garlic sauce aur salad.","Pizzaimages/photo-shawarma.jpg",[250],0],
+  ["Chicken Paratha Roll","Desi ghee paratha mein masalay-daar chicken roll.","Pizzaimages/photo-paratha-roll.jpg",[300],0],
   ["Masala Fries","Chatpati masala fries — har gathering ki jaan.","Pizzaimages/photo-masala-fries.jpg",[200],0],
-  ["Mint Margarita","Fresh mint aur lemon ka refreshing dhamaaka.","Pizzaimages/margarita.png",[200,300],0],
-  ["Doozy Special Shake","Thick creamy shake, Doozy style mein.","Pizzaimages/shake.png",[350,450],0],
-  ["Cappuccino","Garama-garam frothy cappuccino, fresh beans se.","Pizzaimages/cappuccino.png",[250,350],0],
-  ["Doodh Patti Chai","Kadak doodh patti — asli desi mazaa.","Pizzaimages/chai.png",[150],0],
+  ["Mint Margarita","Fresh mint aur lemon ka refreshing dhamaaka.","Pizzaimages/photo-margarita.jpg",[200,300],0],
+  ["Doozy Special Shake","Thick creamy shake, Doozy style mein.","Pizzaimages/photo-shake.jpg",[350,450],0],
+  ["Cappuccino","Garama-garam frothy cappuccino, fresh beans se.","Pizzaimages/photo-cappuccino.jpg",[250,350],0],
+  ["Doodh Patti Chai","Kadak doodh patti — asli desi mazaa.","Pizzaimages/photo-chai.jpg",[150],0],
   ["Cold Drink (Can)","Thandi can — Coke, Sprite ya Fanta.","Pizzaimages/photo-cold-drink.jpg",[80],0]
 ];
 /* size labels depend on how many prices an item has: [S,M,L] or [M,L] */
@@ -595,7 +606,7 @@ document.addEventListener("click", e=>{
 /* ===== Deals rendering ===== */
 function renderDeals(){
   document.getElementById("dealGrid").innerHTML = deals.map((d,i)=>{
-    const visual = (d.visual||[]).map(v=>`<div class="deal-visual-item"><img src="${imgFor(v)}" alt="${v}">${v.replace(" Pizza","")}</div>`).join('<span class="plus">+</span>');
+    const visual = (d.visual||[]).map(v=>`<div class="deal-visual-item"><img src="${imgFor(v)}" alt="${v}" loading="lazy">${v.replace(" Pizza","")}</div>`).join('<span class="plus">+</span>');
     const selects = (d.selects||[]).map(([label,opts],si)=>`
       <label>${label}</label>
       <select data-deal="${i}" data-sel="${si}">
@@ -674,6 +685,8 @@ function updateCart(){
   const total = cart.reduce((a,c)=>a+c.qty*c.price,0);
   document.getElementById("cartCount").textContent = count;
   document.getElementById("cartTotal").textContent = "Rs. " + total.toLocaleString();
+  const mcb = document.getElementById("mobileCartBar");
+  if(mcb){ document.getElementById("mcbText").textContent = count + (count===1 ? " item" : " items") + " · Rs. " + total.toLocaleString(); mcb.classList.toggle("show", count>0); }
   const box = document.getElementById("cartItems");
   if(!cart.length){
     box.innerHTML = `<div class="cart-empty"><i class="fa-solid fa-cart-shopping" style="font-size:2rem"></i><h3 style="margin:.6rem 0 .3rem">Your Cart Is Empty</h3><p>Add an item or a deal to get started.</p></div>`;
@@ -691,6 +704,7 @@ function updateCart(){
     </div>`).join("");
 }
 updateCart();
+document.getElementById("mcbBtn").addEventListener("click", ()=>document.getElementById("cartBtn").click());
 document.addEventListener("click", e=>{
   const qb = e.target.closest("[data-qty]");
   if(!qb) return;
