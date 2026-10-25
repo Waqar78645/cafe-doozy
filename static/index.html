@@ -243,6 +243,36 @@ footer a:hover{color:var(--gold)}
   .foot-grid{grid-template-columns:1fr}
   .section{padding:60px 0}
 }
+@media (max-width:640px){
+  .menu-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .p-card .img-wrap{height:112px}
+  .p-body{padding:11px;gap:.3rem}
+  .p-body h3{font-size:.97rem;line-height:1.25}
+  .p-body .tag{font-size:.75rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .size-row{gap:.3rem;margin:.25rem 0}
+  .size-row button{padding:.5rem 0;font-size:.71rem;border-radius:8px}
+  .price{font-size:1.02rem}
+  .add-btn{padding:.52rem .78rem;font-size:.82rem}
+  .deal-grid{grid-template-columns:1fr;gap:14px}
+  .deal-card{padding:16px}
+  .deal-visual-item img{width:54px;height:54px}
+  .branch-grid{grid-template-columns:1fr}
+  .hero h1{font-size:2.05rem}
+  .hero-visual img{height:230px}
+  .hero-points{gap:.85rem;margin-top:1.4rem}
+  .hero-points div{font-size:.78rem}
+  .section{padding:44px 0}
+  .stats{gap:1.4rem}
+  .stats b{font-size:1.45rem}
+  .trademark img{height:230px}
+  .cta h2{font-size:1.9rem}
+  .qty button{width:32px;height:32px}
+  .modal{padding:10px}
+  .modal-card{padding:20px}
+  .mega-banner{padding:20px}
+  .mega-banner .btn{margin-left:0;width:100%;justify-content:center}
+  .conv-in .big{font-size:1.2rem}
+}
 </style>
 </head>
 <body>
@@ -473,22 +503,22 @@ footer a:hover{color:var(--gold)}
 /* ===== Data reconstructed from pizzaworldpk.com (menu array, deals, branches) ===== */
 const SIZES = ["Small","Medium","Large"];
 let menu = [
-  ["Doozy Crown Burger","Crispy juicy chicken, special Doozy sauce — hamari pehchan.","Pizzaimages/crown-burger.png",[450],1],
-  ["Zinger Burger","Crunchy fried chicken, cheese slice aur tangy sauce.","Pizzaimages/zinger.png",[400],1],
-  ["Loaded Fries","Cheese, jalapenos aur chicken chunks se fully loaded.","Pizzaimages/loaded-fries.png",[350],1],
+  ["Doozy Crown Burger","Crispy juicy chicken, special Doozy sauce — hamari pehchan.","Pizzaimages/photo-crown-burger.jpg",[450],1],
+  ["Zinger Burger","Crunchy fried chicken, cheese slice aur tangy sauce.","Pizzaimages/photo-zinger.jpg",[400],1],
+  ["Loaded Fries","Cheese, jalapenos aur chicken chunks se fully loaded.","Pizzaimages/photo-loaded-fries.jpg",[350],1],
   ["Doozy Cold Coffee","Thandi, creamy aur chocolatey — garmi ka best jawab.","Pizzaimages/cold-coffee.png",[250,350],1],
-  ["Pizza Fries","Fries par pizza wala full scene — sauce, cheese, toppings.","Pizzaimages/pizza-fries.png",[480],0],
+  ["Pizza Fries","Fries par pizza wala full scene — sauce, cheese, toppings.","Pizzaimages/photo-pizza-fries.jpg",[480],0],
   ["Club Sandwich","Triple layer grilled chicken, egg aur fries ke saath.","Pizzaimages/club-sandwich.png",[420],0],
-  ["Crispy Broast (2 Pcs)","Golden crispy broast, garam aur fresh, chutney ke saath.","Pizzaimages/broast.png",[550],0],
-  ["Broast Bucket (4 Pcs)","Poori gathering ke liye crispy broast bucket.","Pizzaimages/broast-bucket.png",[950],0],
+  ["Crispy Broast (2 Pcs)","Golden crispy broast, garam aur fresh, chutney ke saath.","Pizzaimages/photo-broast.jpg",[550],0],
+  ["Broast Bucket (4 Pcs)","Poori gathering ke liye crispy broast bucket.","Pizzaimages/photo-broast-bucket.jpg",[950],0],
   ["Chicken Shawarma","Soft roti mein juicy chicken, garlic sauce aur salad.","Pizzaimages/shawarma.png",[250],0],
   ["Chicken Paratha Roll","Desi ghee paratha mein masalay-daar chicken roll.","Pizzaimages/paratha-roll.png",[300],0],
-  ["Masala Fries","Chatpati masala fries — har gathering ki jaan.","Pizzaimages/masala-fries.png",[200],0],
+  ["Masala Fries","Chatpati masala fries — har gathering ki jaan.","Pizzaimages/photo-masala-fries.jpg",[200],0],
   ["Mint Margarita","Fresh mint aur lemon ka refreshing dhamaaka.","Pizzaimages/margarita.png",[200,300],0],
   ["Doozy Special Shake","Thick creamy shake, Doozy style mein.","Pizzaimages/shake.png",[350,450],0],
   ["Cappuccino","Garama-garam frothy cappuccino, fresh beans se.","Pizzaimages/cappuccino.png",[250,350],0],
   ["Doodh Patti Chai","Kadak doodh patti — asli desi mazaa.","Pizzaimages/chai.png",[150],0],
-  ["Cold Drink (Can)","Thandi can — Coke, Sprite ya Fanta.","Pizzaimages/cold-drink.png",[80],0]
+  ["Cold Drink (Can)","Thandi can — Coke, Sprite ya Fanta.","Pizzaimages/photo-cold-drink.jpg",[80],0]
 ];
 /* size labels depend on how many prices an item has: [S,M,L] or [M,L] */
 function sizeLabels(prices){ return prices.length===3 ? SIZES : prices.length===2 ? ["Regular","Large"] : ["Regular"]; }

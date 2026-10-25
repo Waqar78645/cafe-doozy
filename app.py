@@ -90,22 +90,22 @@ def hash_pw(pw: str) -> str:
 
 def seed(c):
     menu = [
-        ("Doozy Crown Burger","Crispy juicy chicken, special Doozy sauce — hamari pehchan.","Pizzaimages/crown-burger.png",[450],1),
-        ("Zinger Burger","Crunchy fried chicken, cheese slice aur tangy sauce.","Pizzaimages/zinger.png",[400],1),
-        ("Loaded Fries","Cheese, jalapenos aur chicken chunks se fully loaded.","Pizzaimages/loaded-fries.png",[350],1),
+        ("Doozy Crown Burger","Crispy juicy chicken, special Doozy sauce — hamari pehchan.","Pizzaimages/photo-crown-burger.jpg",[450],1),
+        ("Zinger Burger","Crunchy fried chicken, cheese slice aur tangy sauce.","Pizzaimages/photo-zinger.jpg",[400],1),
+        ("Loaded Fries","Cheese, jalapenos aur chicken chunks se fully loaded.","Pizzaimages/photo-loaded-fries.jpg",[350],1),
         ("Doozy Cold Coffee","Thandi, creamy aur chocolatey — garmi ka best jawab.","Pizzaimages/cold-coffee.png",[250,350],1),
-        ("Pizza Fries","Fries par pizza wala full scene — sauce, cheese, toppings.","Pizzaimages/pizza-fries.png",[480],0),
+        ("Pizza Fries","Fries par pizza wala full scene — sauce, cheese, toppings.","Pizzaimages/photo-pizza-fries.jpg",[480],0),
         ("Club Sandwich","Triple layer grilled chicken, egg aur fries ke saath.","Pizzaimages/club-sandwich.png",[420],0),
-        ("Crispy Broast (2 Pcs)","Golden crispy broast, garam aur fresh, chutney ke saath.","Pizzaimages/broast.png",[550],0),
-        ("Broast Bucket (4 Pcs)","Poori gathering ke liye crispy broast bucket.","Pizzaimages/broast-bucket.png",[950],0),
+        ("Crispy Broast (2 Pcs)","Golden crispy broast, garam aur fresh, chutney ke saath.","Pizzaimages/photo-broast.jpg",[550],0),
+        ("Broast Bucket (4 Pcs)","Poori gathering ke liye crispy broast bucket.","Pizzaimages/photo-broast-bucket.jpg",[950],0),
         ("Chicken Shawarma","Soft roti mein juicy chicken, garlic sauce aur salad.","Pizzaimages/shawarma.png",[250],0),
         ("Chicken Paratha Roll","Desi ghee paratha mein masalay-daar chicken roll.","Pizzaimages/paratha-roll.png",[300],0),
-        ("Masala Fries","Chatpati masala fries — har gathering ki jaan.","Pizzaimages/masala-fries.png",[200],0),
+        ("Masala Fries","Chatpati masala fries — har gathering ki jaan.","Pizzaimages/photo-masala-fries.jpg",[200],0),
         ("Mint Margarita","Fresh mint aur lemon ka refreshing dhamaaka.","Pizzaimages/margarita.png",[200,300],0),
         ("Doozy Special Shake","Thick creamy shake, Doozy style mein.","Pizzaimages/shake.png",[350,450],0),
         ("Cappuccino","Garama-garam frothy cappuccino, fresh beans se.","Pizzaimages/cappuccino.png",[250,350],0),
         ("Doodh Patti Chai","Kadak doodh patti — asli desi mazaa.","Pizzaimages/chai.png",[150],0),
-        ("Cold Drink (Can)","Thandi can — Coke, Sprite ya Fanta.","Pizzaimages/cold-drink.png",[80],0),
+        ("Cold Drink (Can)","Thandi can — Coke, Sprite ya Fanta.","Pizzaimages/photo-cold-drink.jpg",[80],0),
     ]
     for i, (n, t, img, prices, best) in enumerate(menu):
         c.execute("INSERT INTO products(name,tagline,image,prices,best_seller,sort) VALUES(?,?,?,?,?,?)",
